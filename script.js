@@ -1,5 +1,7 @@
 const video = document.getElementById('video')
-
+video.addEventListener('touchstart', function(event) {
+  event.preventDefault();
+});
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
