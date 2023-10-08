@@ -35,12 +35,14 @@ video.addEventListener('play', () => {
 const startButton = document.getElementById('startButton');
 
 startButton.addEventListener('click', async () => {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-    } catch (error) {
-        console.error('Kamera erişimi hatası: ', error);
-    }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+    // Kameraya izin verildiğinde videoyu başlat
+    video.play();
+} catch (error) {
+    console.error('Kamera erişimi hatası: ', error);
+}
 });
 
 let isFullscreen = false;
@@ -49,9 +51,6 @@ video.addEventListener('click', function() {
     if (isFullscreen) {
         video.style.width = 'auto';
         video.style.height = 'auto';
-    } else {
-        video.style.width = '100%';
-        video.style.height = '100%';
     }
     isFullscreen = !isFullscreen;
 });
