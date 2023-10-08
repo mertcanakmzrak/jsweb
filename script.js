@@ -42,3 +42,16 @@ startButton.addEventListener('click', async () => {
         console.error('Kamera erişimi hatası: ', error);
     }
 });
+
+let isFullscreen = false;
+
+video.addEventListener('click', function() {
+    if (isFullscreen) {
+        video.style.width = 'auto';
+        video.style.height = 'auto';
+    } else {
+        video.style.width = '100%';
+        video.style.height = '100%';
+    }
+    isFullscreen = !isFullscreen;
+});
