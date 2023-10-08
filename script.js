@@ -55,3 +55,15 @@ video.addEventListener('click', function() {
   }
   isFullscreen = !isFullscreen;
 });
+
+const canvas = faceapi.createCanvasFromMedia(video);
+document.body.append(canvas);
+
+function resizeCanvas() {
+    canvas.width = video.width;
+    canvas.height = video.height;
+}
+
+// Sayfa yüklendiğinde ve pencere boyutu değiştiğinde boyutları güncelleyin
+window.addEventListener('load', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
